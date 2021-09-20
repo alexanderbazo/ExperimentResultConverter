@@ -1,0 +1,6 @@
+# data
+data/
+results.csv
+
+# node
+node_modules

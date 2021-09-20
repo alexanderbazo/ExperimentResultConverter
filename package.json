@@ -1,0 +1,20 @@
+{
+  "name": "experiment-data-json-to-x",
+  "version": "1.0.0",
+  "description": "Transforms multiple JSON file into single CSV result set",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js data results.csv",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Bazo <alexanderbazo@googlemail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  }
+}
