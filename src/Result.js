@@ -141,7 +141,7 @@ class Result {
             let value = this[property],
                 token;
             if (typeof value === "string") {
-                token = value;
+                token = value.replace(/"/g, '""');
             }
             if (typeof value === "number") {
                 token = (value).toString();
