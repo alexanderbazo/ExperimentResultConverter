@@ -55,7 +55,10 @@ const CSV_HEADERS = ["EXPERIMENT_ID",
     "SECOND_QUIZ_QUESTION_FOUR_ANSWER_ONE",
     "SECOND_QUIZ_QUESTION_FOUR_ANSWER_TWO",
     "SECOND_QUIZ_QUESTION_FOUR_NOT_ANSWERED"
-];
+],
+DEFAULT_DELIMITER = ",";
+
+var delimiter = DEFAULT_DELIMITER;
 
 class Result {
 
@@ -152,19 +155,23 @@ class Result {
             token = token.replace(/(?:\r\n|\r|\n)/g, " ");
             parts.push(`"${token}"`);
         });
-        return parts.join(",")
+        return parts.join(delimiter)
     }
 
     static getCSVHeader() {
-        return CSV_HEADERS.map( header => `"${header}"`).join(",");
+        return CSV_HEADERS.map( header => `"${header}"`).join(delimiter);
     }
 
-    static fromFilePath(path) {
-        let content = fs.readFileSync(path, {
+    static async fromFilePath(path) {
+        let content = await fs.promises.readFile(path, {
                 encoding: "utf8",
             }),
             data = JSON.parse(content);
         return new Result(data);
+    }
+
+    static setDelimiter(customDelimiter = DEFAULT_DELIMITER) {
+        delimiter = customDelimiter;
     }
 }
 
